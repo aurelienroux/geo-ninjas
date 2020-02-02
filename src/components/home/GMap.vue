@@ -1,6 +1,6 @@
 <template>
   <div class="map">
-    <h2>Map</h2>
+    <div class="google-map" id="map"></div>
   </div>
 </template>
 
@@ -8,9 +8,38 @@
 export default {
   name: 'GMap',
   data() {
-    return {}
+    return {
+      lat: 45.50884,
+      lng: -73.58781
+    }
+  },
+  methods: {
+    renderMap() {
+      /*eslint-disable */
+      const map = new google.maps.Map(document.getElementById('map'), {
+        /*eslint-enable */
+        center: { lat: this.lat, lng: this.lng },
+        zoom: 10,
+        maxZoom: 15,
+        minZoom: 3
+        // streetViewControl: false
+      })
+    }
+  },
+  mounted() {
+    this.renderMap()
   }
 }
 </script>
 
-<style></style>
+<style>
+.google-map {
+  background: #fff;
+  height: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+</style>
