@@ -9,7 +9,11 @@
               Sign up
             </router-link>
           </li>
-          <li><a href="">Login</a></li>
+          <li>
+            <router-link to="/login">
+              Login
+            </router-link>
+          </li>
           <li><a @click="logout">Logout</a></li>
         </ul>
       </div>
