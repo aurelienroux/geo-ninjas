@@ -29,8 +29,10 @@ export default {
     }
   },
   mounted() {
-    this.renderMap()
-    console.log(firebase.auth().currentUser)
+    if (document.getElementById('map')) {
+      this.renderMap()
+      console.log(firebase.auth().currentUser)
+    }
   }
 }
 </script>

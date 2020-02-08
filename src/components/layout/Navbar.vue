@@ -2,7 +2,9 @@
   <div class="navbar">
     <nav class="deep-purple darken-1">
       <div class="container">
-        <a href="" class="brand-logo left">GeoNinjas</a>
+        <router-link :to="{ name: 'home' }" class="brand-logo left">
+          GeoNinjas
+        </router-link>
         <ul class="right">
           <li>
             <router-link to="/signup">
@@ -34,7 +36,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.push({ name: 'signup' })
+          this.$router.push({ name: 'login' })
         })
     }
   }
