@@ -4,7 +4,11 @@
       <div class="container">
         <a href="" class="brand-logo left">GeoNinjas</a>
         <ul class="right">
-          <li><a href="">Sign up</a></li>
+          <li>
+            <router-link to="/signup">
+              Sign up
+            </router-link>
+          </li>
           <li><a href="">Login</a></li>
         </ul>
       </div>
