@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+// import firebase from 'firebase'
 
 export default {
   name: 'GMap',
   data() {
     return {
-      lat: 45.50884,
-      lng: -73.58781
+      lat: 53,
+      lng: -2
     }
   },
   methods: {
@@ -23,15 +23,34 @@ export default {
         center: { lat: this.lat, lng: this.lng },
         zoom: 10,
         maxZoom: 15,
-        minZoom: 3
-        // streetViewControl: false
+        minZoom: 3,
+        streetViewControl: false
       })
     }
   },
   mounted() {
     if (document.getElementById('map')) {
-      this.renderMap()
-      console.log(firebase.auth().currentUser)
+      if (navigator.geolocation) {
+        // get user location
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            this.lat = pos.coords.latitude
+            this.lng = pos.coords.longitude
+            this.renderMap()
+          },
+          err => {
+            console.log(err)
+            this.renderMap
+          },
+          {
+            maximumAge: 60000,
+            timeout: 3000
+          }
+        )
+      } else {
+        // position centre by default values
+        this.renderMap
+      }
     }
   }
 }
