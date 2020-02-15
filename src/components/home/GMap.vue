@@ -84,6 +84,7 @@ export default {
             this.renderMap()
           },
           err => {
+            // eslint-disable-next-line
             console.log(err)
             this.renderMap
           },
