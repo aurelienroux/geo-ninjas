@@ -5,9 +5,7 @@
       <ul class="comments collection">
         <li v-for="(comment, index) in comments" :key="index">
           <div class="deep-purple-text">{{ comment.from }}</div>
-          <div class="grey-text text-darken-2">
-            {{ comment.content }}
-          </div>
+          <div class="grey-text text-darken-2">{{ comment.content }}</div>
         </li>
       </ul>
       <form @submit.prevent="addComment">
@@ -43,7 +41,7 @@ export default {
         db.collection('comments')
           .add({
             to: this.$route.params.id,
-            from: this.user.id,
+            from: this.user.alias,
             content: this.newComment,
             time: Date.now()
           })
@@ -93,4 +91,17 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.view-profile .card {
+  padding: 20px;
+  margin-top: 60px;
+}
+.view-profile h2 {
+  font-style: 2em;
+  margin-top: 0;
+}
+.view-profile li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+</style>
