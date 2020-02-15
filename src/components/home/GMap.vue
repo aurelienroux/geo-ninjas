@@ -18,15 +18,36 @@ export default {
   },
   methods: {
     renderMap() {
-      /*eslint-disable */
+      // eslint-disable-next-line
       const map = new google.maps.Map(document.getElementById('map'), {
-        /*eslint-enable */
         center: { lat: this.lat, lng: this.lng },
         zoom: 10,
         maxZoom: 15,
         minZoom: 3,
         streetViewControl: false
       })
+
+      db.collection('users')
+        .get()
+        .then(users => {
+          users.docs.forEach(doc => {
+            let data = doc.data()
+            if (data.geolocation) {
+              // eslint-disable-next-line
+              let marker = new google.maps.Marker({
+                position: {
+                  lat: data.geolocation.lat,
+                  lng: data.geolocation.lng
+                },
+                map
+              })
+              // add click event to marker
+              marker.addListener('click', () => {
+                console.log(doc.id)
+              })
+            }
+          })
+        })
     }
   },
   mounted() {
