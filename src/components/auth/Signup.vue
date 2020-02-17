@@ -69,6 +69,7 @@ export default {
                 this.$router.push({ name: 'home' })
               })
               .catch(err => {
+                // eslint-disable-next-line
                 console.log(err)
                 this.feedback = err
               })

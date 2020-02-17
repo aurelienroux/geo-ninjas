@@ -17,7 +17,7 @@ export default {
     }
   },
   methods: {
-    renderMap() {
+    initMap() {
       // eslint-disable-next-line
       const map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: this.lat, lng: this.lng },
@@ -78,15 +78,15 @@ export default {
                 })
               })
               .then(() => {
-                this.renderMap()
+                this.initMap()
               })
 
-            this.renderMap()
+            this.initMap()
           },
           err => {
             // eslint-disable-next-line
             console.log(err)
-            this.renderMap
+            this.initMap
           },
           {
             maximumAge: 60000,
@@ -95,7 +95,7 @@ export default {
         )
       } else {
         // position centre by default values
-        this.renderMap
+        this.initMap
       }
     }
   }
